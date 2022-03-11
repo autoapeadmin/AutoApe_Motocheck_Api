@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.cdi.ltsa.govt.nz/SecurityService" xmlns:s7="http://localhost/Schema/ChangePassword" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/" xmlns:s6="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:s4="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:s1="http://localhost/Schema/SecurityService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://localhost/Schema/CdiServiceTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s5="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" targetNamespace="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/">
+      <s:import namespace="http://localhost/Schema/SecurityService" />
+      <s:import namespace="http://localhost/Schema/ChangePassword" />
+      <s:element name="AuthenticateClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AuthenticateClientRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AuthenticateClientResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s7:ChangePasswordRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s7:ChangePasswordResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/SecurityService">
+      <s:import namespace="http://localhost/Schema/CdiServiceTypes" />
+      <s:element name="AuthenticateClientRequest" type="s1:AuthenticateClientRequest" />
+      <s:complexType name="AuthenticateClientRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AuthenticateClientResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AuthenticateClientResult" type="s1:AuthenticateClientResponse" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/CdiServiceTypes">
+      <s:complexType name="CDIRequest" />
+      <s:complexType name="CDIResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceHeader" type="s2:ServiceHeaderType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceHeaderType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Identification" type="s2:IdentificationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s2:StatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="NextService" type="s2:NextServiceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IdentificationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CdiReference" type="s2:CdiReferenceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CdiReferenceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Environment" type="s2:EnvironmentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialSession" type="s2:CdiReferenceTypeFinancialSession" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentType">
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Release" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="CdiReferenceTypeFinancialSession">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Id" type="s:normalizedString" />
+            <s:attribute name="Status" type="s:NMTOKEN" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="StatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Messages" type="s2:ArrayOfMessageType" />
+        </s:sequence>
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Text" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" type="s2:MessageType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MessageType">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Type" type="s:normalizedString" />
+            <s:attribute name="Code" type="s:normalizedString" />
+            <s:attribute name="Origin" type="s:normalizedString" />
+            <s:attribute name="Line" type="s:nonNegativeInteger" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="NextServiceType">
+        <s:attribute name="Service" type="s:normalizedString" />
+        <s:attribute name="Method" type="s:normalizedString" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService">
+      <s:complexType name="ClientIdentifiersType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountId">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute name="AccountType">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="MotoChek" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:attribute>
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CDIToken" type="s3:CDIToken" />
+      <s:complexType name="CDIToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TokenValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:element name="CDISessionToken" type="s:string" />
+      <s:element name="ClientIdentifiers" type="s3:ClientIdentifiersType" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" />
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService" />
+      <s:import namespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+      <s:element name="Security" type="s4:Security" />
+      <s:complexType name="Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserNameToken" type="s4:UserNameToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:CDIToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:CDISessionToken" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityTokenReference" type="s4:SecurityTokenReference" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:ClientIdentifiers" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="UserNameToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s5:LocationID" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s5:EndPointID" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecurityTokenReference">
+        <s:attribute ref="s6:Id" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd">
+      <s:element name="LocationID" type="s:string" />
+      <s:element name="EndPointID" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <s:attribute name="Id" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/ChangePassword">
+      <s:import namespace="http://localhost/Schema/CdiServiceTypes" />
+      <s:element name="ChangePasswordRequest" type="s7:ChangePasswordRequest" />
+      <s:complexType name="ChangePasswordRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s7:ChangePasswordRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ChangePasswordRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserIdentifier" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentPassword" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChangePasswordNormalResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s7:ChangePasswordNormalResponseResponseBody" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChangePasswordNormalResponseResponseBody" />
+      <s:complexType name="ChangePasswordErrorResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s7:ChangePasswordErrorResponseResponseBody" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChangePasswordErrorResponseResponseBody" />
+      <s:element name="ChangePasswordResult" type="s7:ChangePasswordResponse" />
+      <s:complexType name="ChangePasswordResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:choice minOccurs="1" maxOccurs="1">
+                <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordErrorResponse" type="s7:ChangePasswordErrorResponse" />
+                <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordNormalResponse" type="s7:ChangePasswordNormalResponse" />
+              </s:choice>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticateClientSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateClient" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateClientSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateClientSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AccessControlSoap">
+    <wsdl:operation name="AuthenticateClient">
+      <wsdl:input message="tns:AuthenticateClientSoapIn" />
+      <wsdl:output message="tns:AuthenticateClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccessControlSoap" type="tns:AccessControlSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateClient">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/AuthenticateClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AuthenticateClientSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AuthenticateClientSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePasswordSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePasswordSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AccessControlSoap12" type="tns:AccessControlSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateClient">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/AuthenticateClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AuthenticateClientSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AuthenticateClientSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePasswordSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePasswordSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Security/AccessControl/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccessControl">
+    <wsdl:port name="AccessControlSoap" binding="tns:AccessControlSoap">
+      <soap:address location="http://localhost/CDI_2010/WebServices/Security/AccessControl.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AccessControlSoap12" binding="tns:AccessControlSoap12">
+      <soap12:address location="http://localhost/CDI_2010/WebServices/Security/AccessControl.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

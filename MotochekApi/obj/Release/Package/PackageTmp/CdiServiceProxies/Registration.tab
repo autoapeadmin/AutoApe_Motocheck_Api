@@ -1,0 +1,1 @@
+wsdl.exe Registration.wsdl /namespace:CdiClient.CdiServices.Registration /out:RegistrationServiceProxy.cs /appsettingurlkey:RegistrationUrl /language:CS

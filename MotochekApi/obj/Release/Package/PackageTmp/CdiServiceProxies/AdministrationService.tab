@@ -1,0 +1,1 @@
+wsdl.exe AdministrationService.wsdl /namespace:CdiClient.CdiServices.AdministrationService /out:AdministrationServiceProxy.cs /appsettingurlkey:AdministrationServiceUrl /language:CS

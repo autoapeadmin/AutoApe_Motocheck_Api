@@ -1,0 +1,2590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s7="http://www.w3.org/1999/xlink" xmlns:s2="http://localhost/Schema/CdiServiceTypes" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s9="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:s5="urn:oasis:names:tc:ciq:ct:3" xmlns:s8="urn:oasis:names:tc:ciq:xal:3" xmlns:s10="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" xmlns:s12="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s3="http://localhost/Schema/CdiCommonTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/" xmlns:s6="urn:oasis:names:tc:ciq:xnl:3" xmlns:s1="http://localhost/Schema/RegistrationTypes" xmlns:s11="http://schemas.cdi.ltsa.govt.nz/SecurityService" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s4="urn:oasis:names:tc:ciq:xpil:3" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/">
+      <s:import namespace="http://localhost/Schema/RegistrationTypes" />
+      <s:element name="InquireCurrentDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireCurrentDetailsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireCurrentDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireCurrentDetailsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireRegisteredPersonAsAtDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireRegisteredPersonAsAtDateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireRegisteredPersonAsAtDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireRegisteredPersonAsAtDateResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireRegisteredPersonHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireRegisteredPersonHistoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireRegisteredPersonHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:InquireRegisteredPersonHistoryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCurrentRegisteredPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:ConfirmCurrentRegisteredPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCurrentRegisteredPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:ConfirmCurrentRegisteredPersonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestRegisteredPersonCertificateDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:RequestRegisteredPersonDetailsCertificateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestRegisteredPersonCertificateDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:RequestRegisteredPersonCertificateDetailsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/RegistrationTypes">
+      <s:import namespace="http://localhost/Schema/CdiServiceTypes" />
+      <s:import namespace="http://localhost/Schema/CdiCommonTypes" />
+      <s:import namespace="urn:oasis:names:tc:ciq:xpil:3" />
+      <s:element name="InquireCurrentDetailsRequest">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIRequest">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:ArrayOfVehicleOrPlateType" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVehicleOrPlateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestDetail" type="s3:VehicleOrPlateType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfirmCurrentRegisteredPersonRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:VehicleOrPlateType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Party" type="s4:PartyType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="InquireCurrentDetailsResult">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIResponse">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:ArrayOfInquireCurrentDetailsResponseResponseDetail" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInquireCurrentDetailsResponseResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResponseDetail">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s3:VehicleOrPlateType" />
+                <s:choice minOccurs="1" maxOccurs="1">
+                  <s:element minOccurs="0" maxOccurs="1" name="Vehicle" type="s3:BasicVehicleType" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TradePlate" type="s3:BasicTradePlateType" />
+                </s:choice>
+              </s:sequence>
+              <s:attribute name="ResponseType" type="s3:ResponseTypeList" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InquireRegisteredPersonAsAtDateRequest">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIRequest">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:ArrayOfVehicleOrPlateAsAtRequestType" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVehicleOrPlateAsAtRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestDetail" type="s1:VehicleOrPlateAsAtRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleOrPlateAsAtRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:VehicleOrPlateType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="AsAtDate" type="s:date" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="InquireRegisteredPersonAsAtDateResult">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIResponse">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:ArrayOfInquireRegisteredPersonAsAtDateResponseResponseDetail" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInquireRegisteredPersonAsAtDateResponseResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResponseDetail">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s1:VehicleOrPlateAsAtRequestType" />
+                <s:choice minOccurs="1" maxOccurs="1">
+                  <s:element minOccurs="0" maxOccurs="1" name="Vehicle" type="s3:BasicVehicleType" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TradePlate" type="s3:BasicTradePlateType" />
+                </s:choice>
+              </s:sequence>
+              <s:attribute name="ResponseType" type="s3:ResponseTypeList" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InquireRegisteredPersonHistoryRequest">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIRequest">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:ArrayOfVehicleOrPlateType" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:element name="InquireRegisteredPersonHistoryResult">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIResponse">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:ArrayOfInquireRegisteredPersonHistoryResponseResponseDetail" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInquireRegisteredPersonHistoryResponseResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResponseDetail">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s3:VehicleOrPlateType" />
+                <s:choice minOccurs="1" maxOccurs="1">
+                  <s:element minOccurs="0" maxOccurs="1" name="Vehicle" type="s3:BasicVehicleType" />
+                  <s:element minOccurs="0" maxOccurs="1" name="TradePlate" type="s3:BasicTradePlateType" />
+                </s:choice>
+              </s:sequence>
+              <s:attribute name="ResponseType" type="s3:ResponseTypeList" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmCurrentRegisteredPersonRequest">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIRequest">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:ArrayOfConfirmCurrentRegisteredPersonRequestType" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConfirmCurrentRegisteredPersonRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestDetail" type="s1:ConfirmCurrentRegisteredPersonRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmCurrentRegisteredPersonResult">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIResponse">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:ArrayOfConfirmCurrentRegisteredPersonResponseResponseDetail" />
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConfirmCurrentRegisteredPersonResponseResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResponseDetail">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s1:ConfirmCurrentRegisteredPersonRequestType" />
+                <s:element minOccurs="1" maxOccurs="1" name="Match" type="s:boolean" />
+              </s:sequence>
+              <s:attribute name="ResponseType" type="s3:ResponseTypeList" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestRegisteredPersonDetailsCertificateRequest">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIRequest">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="RequestBody">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s1:RequestRegisteredPersonDetailsCertificateRequestType" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestRegisteredPersonDetailsCertificateRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:VehicleOrPlateType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Party" type="s4:PartyType" />
+              <s:element minOccurs="1" maxOccurs="1" name="CertificateType" type="s3:CertificateTypeList" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RequestRegisteredPersonCertificateDetailsResult">
+        <s:complexType>
+          <s:complexContent mixed="false">
+            <s:extension base="s2:CDIResponse">
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ResponseBody">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" name="ResponseDetail">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="1" name="RequestDetail" type="s1:RequestRegisteredPersonDetailsCertificateRequestType" />
+                          </s:sequence>
+                          <s:attribute name="ResponseType" type="s3:ResponseTypeList" />
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+            </s:extension>
+          </s:complexContent>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/CdiServiceTypes">
+      <s:complexType name="CDIRequest" />
+      <s:complexType name="CDIResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceHeader" type="s2:ServiceHeaderType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceHeaderType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Identification" type="s2:IdentificationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s2:StatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="NextService" type="s2:NextServiceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IdentificationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CdiReference" type="s2:CdiReferenceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CdiReferenceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Environment" type="s2:EnvironmentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialSession" type="s2:CdiReferenceTypeFinancialSession" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentType">
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Release" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="CdiReferenceTypeFinancialSession">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Id" type="s:normalizedString" />
+            <s:attribute name="Status" type="s:NMTOKEN" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="StatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Messages" type="s2:ArrayOfMessageType" />
+        </s:sequence>
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Text" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" type="s2:MessageType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MessageType">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Type" type="s:normalizedString" />
+            <s:attribute name="Code" type="s:normalizedString" />
+            <s:attribute name="Origin" type="s:normalizedString" />
+            <s:attribute name="Line" type="s:nonNegativeInteger" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="NextServiceType">
+        <s:attribute name="Service" type="s:normalizedString" />
+        <s:attribute name="Method" type="s:normalizedString" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/CdiCommonTypes">
+      <s:import namespace="urn:oasis:names:tc:ciq:xpil:3" />
+      <s:complexType name="VehicleOrPlateType">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="Plate" type="s3:BasicPlateType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vehicle" type="s3:BasicVehicleDetailsType" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BasicPlateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PlateNumber" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlateType" type="s3:CodeStringType" />
+          <s:element minOccurs="0" maxOccurs="1" name="EffectiveDate" type="s:date" />
+        </s:sequence>
+        <s:attribute name="PlateStatus">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Active" />
+              <s:enumeration value="Inactive" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:complexType name="CodeStringType">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Description" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="BasicVehicleDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleSystemId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearOfManufacture" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="Make" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubModel" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyStyle" type="s3:CodeStringType" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="VIN" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChassisNumber" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="BasicColour" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportedStolen" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EngineNumber" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondColour" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CCRating" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="Power" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryOfOrigin">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousCountryOfRegistration">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="AssemblyType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="GrossVehicleMass" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumberOfSeats" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="FuelType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="AlternateFuelType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ReliableOdometer" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaximumRatedTowedMassForUnbrakedTrailer" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaximumRatedTowedMassForBrakedTrailer" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="TareWeight" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumberOfAxles" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="AxleType" type="s3:CodeStringType" />
+          <s:element minOccurs="0" maxOccurs="1" name="WheelBase" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrontAxleGroupRating" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="RearAxleGroup" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateOfFirstNZRegistration" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="CauseOfLatestRegistration" type="s3:CodeStringType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubjectToWOF" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubjectToCOF" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubjectToRUC" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateOfLastRegistration" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentVehicleOdometerUnit" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImportedDamaged" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegisteredOverseas" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateOfFirstRegistrationOverseas">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1" name="Year" nillable="true" type="s:nonNegativeInteger" />
+                <s:element minOccurs="1" maxOccurs="1" name="Month" nillable="true" type="s:nonNegativeInteger" />
+                <s:element minOccurs="1" maxOccurs="1" name="Day" nillable="true" type="s:nonNegativeInteger" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="InspectionAgent" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumberOfOwners" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleUsages" type="s3:ArrayOfVehicleUsageDetailsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleRegistrationStatus">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="LatestDateOfRegistrationCancellation" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestRegistrationCancellationReason">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CodeNumberType">
+        <s:simpleContent>
+          <s:extension base="s:nonNegativeInteger">
+            <s:attribute name="Description" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleUsageDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleUsage" type="s3:VehicleUsageDetailsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleUsageDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleUsageCode">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="EffectiveDate" type="s:date" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BasicVehicleType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:BasicVehicleDetailsType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Plates" type="s3:ArrayOfBasicVehicleTypePlate" />
+              <s:element minOccurs="0" maxOccurs="1" name="Inspections" type="s3:ArrayOfInspectionDetailsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Registrations" type="s3:ArrayOfBasicVehicleTypeRegistration" />
+              <s:element minOccurs="0" maxOccurs="1" name="RucLicences" type="s3:ArrayOfRucLicenceDetailsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="MvrLicences" type="s3:ArrayOfMvrLicenceDetailsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="OdometerReadings" type="s3:ArrayOfOdometerReadingType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBasicVehicleTypePlate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Plate">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s3:BasicPlateType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInspectionDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Inspection" type="s3:InspectionDetailsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InspectionDetailsType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type">
+            <s:simpleType>
+              <s:restriction base="s:string">
+                <s:enumeration value="WOF" />
+                <s:enumeration value="COF" />
+              </s:restriction>
+            </s:simpleType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiryDate" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="BTN" type="s:nonNegativeInteger" />
+        </s:sequence>
+        <s:attribute name="Latest" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfBasicVehicleTypeRegistration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Registration">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s3:RegistrationDetailsType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegistrationDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationNumber" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationDate" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationStatus">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="OdometerReading" type="s3:OdometerReadingType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Parties" type="s3:ArrayOfBasicPartiesParty" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OdometerReadingType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Reading" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReadingDate" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Source">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBasicPartiesParty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Party">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s4:PartyType">
+                  <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="GoneNoAddress" type="s:boolean" />
+                  </s:sequence>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRucLicenceDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RucLicence" type="s3:RucLicenceDetailsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RucLicenceDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicenceType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeNumberType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="OdometerUnit">
+              <s:complexType>
+                <s:simpleContent>
+                  <s:extension base="s3:CodeStringType" />
+                </s:simpleContent>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:date" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDistance" type="s:nonNegativeInteger" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDistance" type="s:nonNegativeInteger" />
+            <s:element minOccurs="0" maxOccurs="1" name="Hubodometer" type="s3:HubodometerDetailsType" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date" />
+          </s:choice>
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleWeight" type="s:nonNegativeInteger" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssueDate" type="s:date" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HubodometerDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Make">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMvrLicenceDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MvrLicence" type="s3:MvrLicenceDetailsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MvrLicenceDetailsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:nonNegativeInteger" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicenceType">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s3:CodeStringType" />
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="ContinuousLicence" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssueDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOdometerReadingType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OdometerReading" type="s3:OdometerReadingType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BasicTradePlateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Plate">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s3:BasicPlateType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="MvrLicences" type="s3:ArrayOfMvrLicenceDetailsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="RucLicences" type="s3:ArrayOfRucLicenceDetailsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Parties" type="s3:ArrayOfBasicPartiesParty" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ResponseTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Normal" />
+          <s:enumeration value="Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CertificateTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="CurrentRegisteredPerson" />
+          <s:enumeration value="RegisteredPersonHistory" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xpil:3">
+      <s:import namespace="urn:oasis:names:tc:ciq:ct:3" />
+      <s:import namespace="urn:oasis:names:tc:ciq:xnl:3" />
+      <s:import namespace="urn:oasis:names:tc:ciq:xal:3" />
+      <s:import namespace="http://www.w3.org/1999/xlink" />
+      <s:complexType name="PartyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FreeTextLines">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="FreeTextLine">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PartyName" type="s6:PartyNameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addresses">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Address">
+                  <s:complexType>
+                    <s:complexContent mixed="false">
+                      <s:extension base="s8:AddressType" />
+                    </s:complexContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Accounts">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Account">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="AccountElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="Organisation">
+                        <s:complexType>
+                          <s:complexContent mixed="false">
+                            <s:extension base="s6:OrganisationNameType" />
+                          </s:complexContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s4:AccountTypeList" />
+                    <s:attribute form="qualified" name="OwnershipType" type="s:time" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNumbers">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="ContactNumber">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="ContactNumberElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="CommunicationMediaType" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute form="qualified" name="Usage" type="s4:ContactNumberUsageList" />
+                    <s:attribute form="qualified" name="ContactHours" type="s:normalizedString" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Documents">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Document">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="NameOnDocument" type="s6:PartyNameType" />
+                      <s:element minOccurs="0" maxOccurs="1" name="AddressOnDocument" type="s8:AddressType" />
+                      <s:element minOccurs="0" maxOccurs="1" name="IssuerName">
+                        <s:complexType>
+                          <s:complexContent mixed="false">
+                            <s:extension base="s6:OrganisationNameType" />
+                          </s:complexContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s4:DocumentTypeList" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ElectronicAddressIdentifiers">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="ElectronicAddressIdentifier">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                        <s:attribute form="qualified" name="Usage" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Label" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Events">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Event">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DateValidFrom" />
+                        <s:attribute ref="s5:DateValidTo" />
+                        <s:attribute form="qualified" name="Date" type="s:dateTime" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Identifiers">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Identifier">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="IdentifierElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s4:PartyIdentifierElementList" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="IssuerName" type="s6:OrganisationNameType" />
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s4:PartyIdentifierTypeList" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Memberships">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Membership">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="MembershipElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="Organisation">
+                        <s:complexType>
+                          <s:complexContent mixed="false">
+                            <s:extension base="s6:OrganisationNameType" />
+                          </s:complexContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Relationships">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Relationship">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" ref="s6:NameLine" />
+                      <s:element minOccurs="0" maxOccurs="1" ref="s6:PersonName" />
+                      <s:element minOccurs="0" maxOccurs="1" ref="s6:OrganisationName" />
+                      <s:element minOccurs="0" maxOccurs="1" name="Addresses">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" name="Address">
+                              <s:complexType>
+                                <s:complexContent mixed="false">
+                                  <s:extension base="s8:AddressType" />
+                                </s:complexContent>
+                              </s:complexType>
+                            </s:element>
+                          </s:sequence>
+                          <s:anyAttribute />
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="ContactNumbers">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" name="ContactNumber">
+                              <s:complexType>
+                                <s:sequence>
+                                  <s:element minOccurs="0" maxOccurs="unbounded" name="ContactNumberElement">
+                                    <s:complexType>
+                                      <s:simpleContent>
+                                        <s:extension base="s:normalizedString">
+                                          <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                                          <s:anyAttribute />
+                                        </s:extension>
+                                      </s:simpleContent>
+                                    </s:complexType>
+                                  </s:element>
+                                </s:sequence>
+                                <s:attribute form="qualified" name="CommunicationMediaType" type="s:normalizedString" />
+                                <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                                <s:attribute form="qualified" name="Usage" type="s4:ContactNumberUsageList" />
+                                <s:attribute form="qualified" name="ContactHours" type="s:normalizedString" />
+                                <s:attribute ref="s5:DateValidFrom" />
+                                <s:attribute ref="s5:DateValidTo" />
+                                <s:attribute ref="s5:DataQualityType" />
+                                <s:attribute ref="s5:ValidFrom" />
+                                <s:attribute ref="s5:ValidTo" />
+                                <s:anyAttribute />
+                              </s:complexType>
+                            </s:element>
+                          </s:sequence>
+                          <s:anyAttribute />
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="ElectronicAddressIdentifiers">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" name="ElectronicAddressIdentifier">
+                              <s:complexType>
+                                <s:simpleContent>
+                                  <s:extension base="s:normalizedString">
+                                    <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                                    <s:attribute form="qualified" name="Usage" type="s:normalizedString" />
+                                    <s:attribute form="qualified" name="Label" type="s:normalizedString" />
+                                    <s:attribute ref="s5:DataQualityType" />
+                                    <s:attribute ref="s5:ValidFrom" />
+                                    <s:attribute ref="s5:ValidTo" />
+                                    <s:anyAttribute />
+                                  </s:extension>
+                                </s:simpleContent>
+                              </s:complexType>
+                            </s:element>
+                          </s:sequence>
+                          <s:anyAttribute />
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute form="qualified" name="PartyType" type="s4:PartyTypeList" />
+                    <s:attribute form="qualified" name="RelationshipWithPerson" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="RelationshipWithOrganisation" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="RelationshipValidFrom" type="s:dateTime" />
+                    <s:attribute form="qualified" name="RelationshipValidTo" type="s:dateTime" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Revenues">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Revenue">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:decimal">
+                        <s:attribute form="qualified" name="CurrencyCode" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                        <s:attribute form="qualified" name="PeriodFrom" type="s:dateTime" />
+                        <s:attribute form="qualified" name="PeriodTo" type="s:dateTime" />
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Precision" type="s:decimal" />
+                        <s:attribute form="qualified" name="Source" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="CountryName" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="AfterTax" type="s:boolean" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Stocks">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Stock">
+                  <s:complexType>
+                    <s:attribute form="qualified" name="ListedCode" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="MarketName" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="CountryName" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="InvestedDate" type="s:dateTime" />
+                    <s:attribute form="qualified" name="ShareQuantity" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="ListedDate" type="s:dateTime" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Vehicles">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Vehicle">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="OrganisationInfo">
+            <s:complexType>
+              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+              <s:attribute form="qualified" name="CategoryType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+              <s:attribute form="qualified" name="Nature" type="s:normalizedString" />
+              <s:attribute form="qualified" name="IndustryType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="IndustryCode" type="s:normalizedString" />
+              <s:attribute form="qualified" name="IndustryCodeType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="NumberOfEmployees" type="s:normalizedString" />
+              <s:attribute form="qualified" name="OperatingHourStartTime" type="s:time" />
+              <s:attribute form="qualified" name="OperatingHourEndTime" type="s:time" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PersonInfo">
+            <s:complexType>
+              <s:attribute form="qualified" name="Age" type="s:normalizedString" />
+              <s:attribute form="qualified" name="CategoryType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="PhysicalStatus" type="s:normalizedString" />
+              <s:attribute form="qualified" name="MaritalStatus" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Ethnicity" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Gender" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Religion" type="s:normalizedString" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="BirthInfo">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="BirthInfoElement">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" name="BirthPlaceDetails" type="s8:AddressType" />
+              </s:sequence>
+              <s:attribute form="qualified" name="BirthDateTime" type="s:dateTime" />
+              <s:attribute form="qualified" name="BirthDateTimePrecision" type="s:duration" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="CountriesOfResidence">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Country">
+                  <s:complexType>
+                    <s:complexContent mixed="false">
+                      <s:extension base="s8:CountryType">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                        <s:attribute ref="s5:DateValidFrom" />
+                        <s:attribute ref="s5:DateValidTo" />
+                      </s:extension>
+                    </s:complexContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Favourites">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Favourite">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Habits">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Habit">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Hobbies">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Hobby">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Languages">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Language">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Speak" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Read" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Write" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Understand" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Preference" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Nationalities">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Country">
+                  <s:complexType>
+                    <s:complexContent mixed="false">
+                      <s:extension base="s8:CountryType">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                        <s:attribute ref="s5:DateValidFrom" />
+                        <s:attribute ref="s5:DateValidTo" />
+                      </s:extension>
+                    </s:complexContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Occupations">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Occupation">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="OccupationElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="Employer">
+                        <s:complexType>
+                          <s:complexContent mixed="false">
+                            <s:extension base="s6:OrganisationNameType" />
+                          </s:complexContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="isSelfEmployed" type="s:boolean" />
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalInfo">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="FreeTextLine">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Feature">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="UnitType" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="BodyMark">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Part" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="Location" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Disability">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Cause" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Allergy">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="HealthCondition">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute form="qualified" name="BloodGroup" type="s:normalizedString" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Preferences">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Preference">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Qualifications">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Qualification">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="QualificationElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                      <s:element minOccurs="0" maxOccurs="1" name="Institution">
+                        <s:complexType>
+                          <s:complexContent mixed="false">
+                            <s:extension base="s6:OrganisationNameType" />
+                          </s:complexContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Visas">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Visa">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="VisaElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+                    <s:attribute ref="s5:DateValidFrom" />
+                    <s:attribute ref="s5:DateValidTo" />
+                    <s:attribute form="qualified" name="EntryByDate" type="s:dateTime" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute form="qualified" name="PartyType" type="s4:PartyTypeList" />
+        <s:attribute form="qualified" name="PartyID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="PartyIDType" type="s:normalizedString" />
+        <s:attribute form="qualified" name="ID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Usage" type="s4:PartyUsageList" />
+        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+        <s:attribute ref="s5:DateValidFrom" />
+        <s:attribute ref="s5:DateValidTo" />
+        <s:attribute form="qualified" name="PartyKey" type="s:normalizedString" />
+        <s:attribute form="qualified" name="PartyKeyRef" type="s:normalizedString" />
+        <s:attribute ref="s7:type" />
+        <s:attribute ref="s7:label" />
+        <s:attribute ref="s7:href" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:attribute ref="s5:LanguageCode" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="AccountTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="BankAccount" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ContactNumberUsageList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Business Fax" />
+          <s:enumeration value="Business Phone" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DocumentTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="DriverLicense" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PartyIdentifierElementList">
+        <s:restriction base="s:string">
+          <s:enumeration value="AccessType" />
+          <s:enumeration value="CustomerNumber" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PartyIdentifierTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Customer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PartyTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Company" />
+          <s:enumeration value="Individual" />
+          <s:enumeration value="Other" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PartyUsageList">
+        <s:restriction base="s:string">
+          <s:enumeration value="RegisteredPerson" />
+          <s:enumeration value="JointRegisteredPerson" />
+          <s:enumeration value="LeaseOwner" />
+          <s:enumeration value="FleetOwner" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:ct:3">
+      <s:attribute name="DataQualityType" type="s5:DataQualityTypeList" />
+      <s:simpleType name="DataQualityTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Valid" />
+          <s:enumeration value="Invalid" />
+        </s:restriction>
+      </s:simpleType>
+      <s:attribute name="ValidFrom" type="s:dateTime" />
+      <s:attribute name="ValidTo" type="s:dateTime" />
+      <s:attribute name="Abbreviation" type="s:boolean" />
+      <s:simpleType name="StatusList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active" />
+          <s:enumeration value="Inactive" />
+        </s:restriction>
+      </s:simpleType>
+      <s:attribute name="DateValidFrom" type="s:dateTime" />
+      <s:attribute name="DateValidTo" type="s:dateTime" />
+      <s:attribute name="LanguageCode" type="s:language" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xnl:3">
+      <s:import namespace="urn:oasis:names:tc:ciq:ct:3" />
+      <s:import namespace="http://www.w3.org/1999/xlink" />
+      <s:complexType name="PartyNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NameLine">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute form="qualified" name="Type" type="s6:NameLineTypeList" />
+                  <s:attribute ref="s5:Abbreviation" />
+                  <s:attribute ref="s5:DataQualityType" />
+                  <s:attribute ref="s5:ValidFrom" />
+                  <s:attribute ref="s5:ValidTo" />
+                  <s:anyAttribute />
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersonName">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s6:PersonNameType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrganisationName">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s6:OrganisationNameType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute form="qualified" name="PartyNameID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="PartyNameIDType" type="s:normalizedString" />
+        <s:attribute form="qualified" name="ID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Usage" type="s:string" />
+        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+        <s:attribute form="qualified" name="JointNameConnector" type="s:normalizedString" />
+        <s:attribute ref="s5:DateValidFrom" />
+        <s:attribute ref="s5:DateValidTo" />
+        <s:attribute form="qualified" name="NameKey" type="s:normalizedString" />
+        <s:attribute form="qualified" name="NameKeyRef" type="s:normalizedString" />
+        <s:attribute ref="s7:type" />
+        <s:attribute ref="s7:label" />
+        <s:attribute ref="s7:href" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:attribute ref="s5:LanguageCode" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="NameLineTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Contact" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PersonNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute form="qualified" name="ElementType" type="s6:PersonNameElementList" />
+                  <s:attribute ref="s5:Abbreviation" />
+                  <s:anyAttribute />
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+        <s:attribute form="qualified" name="PersonID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="PersonIDType" type="s:normalizedString" />
+        <s:attribute form="qualified" name="ID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Usage" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+        <s:attribute ref="s5:DateValidFrom" />
+        <s:attribute ref="s5:DateValidTo" />
+        <s:attribute form="qualified" name="NameKey" type="s:normalizedString" />
+        <s:attribute form="qualified" name="NameKeyRef" type="s:normalizedString" />
+        <s:attribute ref="s7:type" />
+        <s:attribute ref="s7:label" />
+        <s:attribute ref="s7:href" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:attribute ref="s5:LanguageCode" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="PersonNameElementList">
+        <s:restriction base="s:string">
+          <s:enumeration value="FirstName" />
+          <s:enumeration value="MiddleName" />
+          <s:enumeration value="LastName" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="OrganisationNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute form="qualified" name="ElementType" type="s6:OrganisationNameElementList" />
+                  <s:attribute ref="s5:Abbreviation" />
+                  <s:anyAttribute />
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubDivisionName">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                  <s:attribute ref="s5:Abbreviation" />
+                  <s:anyAttribute />
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+        <s:attribute form="qualified" name="OrganisationID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="OrganisationIDType" type="s:normalizedString" />
+        <s:attribute form="qualified" name="ID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Usage" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+        <s:attribute ref="s5:DateValidFrom" />
+        <s:attribute ref="s5:DateValidTo" />
+        <s:attribute form="qualified" name="NameKey" type="s:normalizedString" />
+        <s:attribute form="qualified" name="NameKeyRef" type="s:normalizedString" />
+        <s:attribute ref="s7:type" />
+        <s:attribute ref="s7:label" />
+        <s:attribute ref="s7:href" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:attribute ref="s5:LanguageCode" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="OrganisationNameElementList">
+        <s:restriction base="s:string">
+          <s:enumeration value="FullName" />
+          <s:enumeration value="TradingName" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="NameLine">
+        <s:complexType>
+          <s:simpleContent>
+            <s:extension base="s:normalizedString">
+              <s:attribute form="qualified" name="Type" type="s6:NameLineTypeList" />
+              <s:attribute ref="s5:Abbreviation" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:extension>
+          </s:simpleContent>
+        </s:complexType>
+      </s:element>
+      <s:element name="PersonName" type="s6:PersonNameType" />
+      <s:element name="OrganisationName" type="s6:OrganisationNameType" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xlink">
+      <s:attribute name="type" type="s7:XlinkType" />
+      <s:simpleType name="XlinkType">
+        <s:restriction base="s:string">
+          <s:enumeration value="simple" />
+          <s:enumeration value="extended" />
+          <s:enumeration value="locator" />
+          <s:enumeration value="arc" />
+          <s:enumeration value="resource" />
+          <s:enumeration value="title" />
+        </s:restriction>
+      </s:simpleType>
+      <s:attribute name="label" type="s:NCName" />
+      <s:attribute name="href" type="s:anyURI" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xal:3">
+      <s:import namespace="urn:oasis:names:tc:ciq:ct:3" />
+      <s:import namespace="http://www.w3.org/1999/xlink" />
+      <s:complexType name="AddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FreeTextAddress">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="AddressLine">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                        <s:attribute ref="s5:DataQualityType" />
+                        <s:attribute ref="s5:ValidFrom" />
+                        <s:attribute ref="s5:ValidTo" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Country">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s8:CountryType" />
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="AdministrativeArea">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute ref="s5:Abbreviation" />
+                        <s:attribute form="qualified" name="NameType" type="s8:AdministrativeAreaNameTypeList" />
+                        <s:attribute form="qualified" name="NameCode" type="s8:AdministrativeAreaNameCodeList" />
+                        <s:attribute form="qualified" name="NameCodeType" type="s:normalizedString" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" name="SubAdministrativeArea">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute ref="s5:Abbreviation" />
+                              <s:attribute form="qualified" name="NameType" type="s:normalizedString" />
+                              <s:attribute form="qualified" name="NameCode" type="s:normalizedString" />
+                              <s:attribute form="qualified" name="NameCodeType" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute form="qualified" name="Type" type="s8:AdministrativeAreaTypeList" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Locality">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+                  <s:complexType>
+                    <s:simpleContent>
+                      <s:extension base="s:normalizedString">
+                        <s:attribute ref="s5:Abbreviation" />
+                        <s:attribute form="qualified" name="NameType" type="s8:LocalityNameTypeList" />
+                        <s:attribute form="qualified" name="NameCode" type="s:normalizedString" />
+                        <s:attribute form="qualified" name="NameCodeType" type="s:normalizedString" />
+                        <s:anyAttribute />
+                      </s:extension>
+                    </s:simpleContent>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" name="SubLocality">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+                        <s:complexType>
+                          <s:simpleContent>
+                            <s:extension base="s:normalizedString">
+                              <s:attribute ref="s5:Abbreviation" />
+                              <s:attribute form="qualified" name="NameType" type="s:normalizedString" />
+                              <s:attribute form="qualified" name="NameCode" type="s:normalizedString" />
+                              <s:attribute form="qualified" name="NameCodeType" type="s:normalizedString" />
+                              <s:anyAttribute />
+                            </s:extension>
+                          </s:simpleContent>
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+                    <s:attribute ref="s5:DataQualityType" />
+                    <s:attribute ref="s5:ValidFrom" />
+                    <s:attribute ref="s5:ValidTo" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute form="qualified" name="Type" type="s8:LocalityTypeList" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Thoroughfare">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s8:ThoroughfareType">
+                  <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="SubThoroughfare">
+                      <s:complexType>
+                        <s:complexContent mixed="false">
+                          <s:extension base="s8:ThoroughfareType" />
+                        </s:complexContent>
+                      </s:complexType>
+                    </s:element>
+                  </s:sequence>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Premises">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s8:PremisesType">
+                  <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="SubPremises">
+                      <s:complexType>
+                        <s:complexContent mixed="false">
+                          <s:extension base="s8:PremisesType">
+                            <s:attribute form="qualified" name="Type" type="s8:SubPremisesTypeList" />
+                            <s:attribute form="qualified" name="TypeCode" type="s:normalizedString" />
+                          </s:extension>
+                        </s:complexContent>
+                      </s:complexType>
+                    </s:element>
+                  </s:sequence>
+                  <s:attribute form="qualified" name="Type" type="s8:PremisesTypeList" />
+                  <s:attribute form="qualified" name="TypeCode" type="s:normalizedString" />
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Identifier" type="s8:IdentifierType" />
+              </s:sequence>
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="RuralDelivery">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Identifier" type="s8:IdentifierType" />
+              </s:sequence>
+              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PostalDeliveryPoint">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Identifier" type="s8:IdentifierType" />
+              </s:sequence>
+              <s:attribute form="qualified" name="Type" type="s8:PostalDeliveryPointTypeList" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="PostOffice">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" name="Identifier" type="s8:IdentifierType" />
+              </s:sequence>
+              <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="GeoRSS">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" />
+              </s:sequence>
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="LocationByCoordinates">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="Latitude">
+                  <s:complexType>
+                    <s:attribute form="qualified" name="DegreesMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="MinutesMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="SecondsMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="Direction" type="s:normalizedString" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" name="Longitude">
+                  <s:complexType>
+                    <s:attribute form="qualified" name="DegreesMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="MinutesMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="SecondsMeasure" type="s:normalizedString" />
+                    <s:attribute form="qualified" name="Direction" type="s:normalizedString" />
+                    <s:anyAttribute />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute form="qualified" name="Meridian" type="s:normalizedString" />
+              <s:attribute form="qualified" name="MeridianCodeType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Datum" type="s:normalizedString" />
+              <s:attribute form="qualified" name="DatumCodeType" type="s:normalizedString" />
+              <s:attribute form="qualified" name="Projection" type="s:normalizedString" />
+              <s:attribute form="qualified" name="ProjectionCodeType" type="s:normalizedString" />
+              <s:attribute ref="s5:DataQualityType" />
+              <s:attribute ref="s5:ValidFrom" />
+              <s:attribute ref="s5:ValidTo" />
+              <s:anyAttribute />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+        <s:attribute form="qualified" name="AddressID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="AddressIDType" type="s8:AddressIDTypeList" />
+        <s:attribute form="qualified" name="ID" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Usage" type="s8:AddressUsageList" />
+        <s:attribute form="qualified" name="DeliveryMode" type="s:normalizedString" />
+        <s:attribute form="qualified" name="Status" type="s5:StatusList" />
+        <s:attribute ref="s5:DateValidFrom" />
+        <s:attribute ref="s5:DateValidTo" />
+        <s:attribute form="qualified" name="AddressKey" type="s:normalizedString" />
+        <s:attribute form="qualified" name="AddressKeyRef" type="s:normalizedString" />
+        <s:attribute ref="s7:type" />
+        <s:attribute ref="s7:label" />
+        <s:attribute ref="s7:href" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:attribute ref="s5:LanguageCode" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="CountryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NameElement">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute ref="s5:Abbreviation" />
+                  <s:attribute form="qualified" name="NameType" type="s8:CountryNameTypeList" />
+                  <s:attribute form="qualified" name="NameCode" type="s:normalizedString" />
+                  <s:attribute form="qualified" name="NameCodeType" type="s:normalizedString" />
+                  <s:anyAttribute />
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="CountryNameTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Name" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AdministrativeAreaNameTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Name" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AdministrativeAreaNameCodeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="City" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AdministrativeAreaTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="City" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LocalityNameTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Name" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LocalityTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Suburb" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ThoroughfareType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s8:IdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="NameElement">
+              <s:complexType>
+                <s:simpleContent>
+                  <s:extension base="s:normalizedString">
+                    <s:attribute ref="s5:Abbreviation" />
+                    <s:attribute form="qualified" name="NameType" type="s8:ThoroughfareNameTypeList" />
+                    <s:anyAttribute />
+                  </s:extension>
+                </s:simpleContent>
+              </s:complexType>
+            </s:element>
+          </s:choice>
+        </s:sequence>
+        <s:attribute form="qualified" name="Type" type="s:normalizedString" />
+        <s:attribute form="qualified" name="TypeCode" type="s:normalizedString" />
+        <s:attribute ref="s5:DataQualityType" />
+        <s:attribute ref="s5:ValidFrom" />
+        <s:attribute ref="s5:ValidTo" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="IdentifierType">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute form="qualified" name="Type" type="s8:IdentifierElementTypeList" />
+            <s:attribute ref="s5:Abbreviation" />
+            <s:anyAttribute />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="IdentifierElementTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Name" />
+          <s:enumeration value="Number" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ThoroughfareNameTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="NameAndType" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PremisesType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s8:IdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="NameElement">
+              <s:complexType>
+                <s:simpleContent>
+                  <s:extension base="s:normalizedString">
+                    <s:attribute ref="s5:Abbreviation" />
+                    <s:attribute form="qualified" name="NameType" type="s8:PremisesElementTypeList" />
+                    <s:anyAttribute />
+                  </s:extension>
+                </s:simpleContent>
+              </s:complexType>
+            </s:element>
+          </s:choice>
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="PremisesElementTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Name" />
+          <s:enumeration value="Location" />
+          <s:enumeration value="Type" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SubPremisesTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Flat" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PremisesTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Flat" />
+          <s:enumeration value="Property" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PostalDeliveryPointTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="POBox" />
+          <s:enumeration value="PrivateBag" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AddressIDTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="DPID" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AddressUsageList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Physical" />
+          <s:enumeration value="Mailing" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" />
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService" />
+      <s:import namespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+      <s:element name="Security" type="s9:Security" />
+      <s:complexType name="Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserNameToken" type="s9:UserNameToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s11:CDIToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s11:CDISessionToken" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityTokenReference" type="s9:SecurityTokenReference" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s11:ClientIdentifiers" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="UserNameToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s10:LocationID" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s10:EndPointID" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecurityTokenReference">
+        <s:attribute ref="s12:Id" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd">
+      <s:element name="LocationID" type="s:string" />
+      <s:element name="EndPointID" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService">
+      <s:element name="CDIToken" type="s11:CDIToken" />
+      <s:complexType name="CDIToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TokenValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:element name="CDISessionToken" type="s:string" />
+      <s:element name="ClientIdentifiers" type="s11:ClientIdentifiersType" />
+      <s:complexType name="ClientIdentifiersType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountId">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute name="AccountType">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="MotoChek" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:attribute>
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <s:attribute name="Id" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InquireCurrentDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:InquireCurrentDetails" />
+  </wsdl:message>
+  <wsdl:message name="InquireCurrentDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:InquireCurrentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InquireCurrentDetailsSecurity">
+    <wsdl:part name="Security" element="s9:Security" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonAsAtDateSoapIn">
+    <wsdl:part name="parameters" element="tns:InquireRegisteredPersonAsAtDate" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonAsAtDateSoapOut">
+    <wsdl:part name="parameters" element="tns:InquireRegisteredPersonAsAtDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonAsAtDateSecurity">
+    <wsdl:part name="Security" element="s9:Security" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:InquireRegisteredPersonHistory" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:InquireRegisteredPersonHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="InquireRegisteredPersonHistorySecurity">
+    <wsdl:part name="Security" element="s9:Security" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCurrentRegisteredPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmCurrentRegisteredPerson" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCurrentRegisteredPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmCurrentRegisteredPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCurrentRegisteredPersonSecurity">
+    <wsdl:part name="Security" element="s9:Security" />
+  </wsdl:message>
+  <wsdl:message name="RequestRegisteredPersonCertificateDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestRegisteredPersonCertificateDetails" />
+  </wsdl:message>
+  <wsdl:message name="RequestRegisteredPersonCertificateDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestRegisteredPersonCertificateDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestRegisteredPersonCertificateDetailsSecurity">
+    <wsdl:part name="Security" element="s9:Security" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RegistrationSoap">
+    <wsdl:operation name="InquireCurrentDetails">
+      <wsdl:input message="tns:InquireCurrentDetailsSoapIn" />
+      <wsdl:output message="tns:InquireCurrentDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonAsAtDate">
+      <wsdl:input message="tns:InquireRegisteredPersonAsAtDateSoapIn" />
+      <wsdl:output message="tns:InquireRegisteredPersonAsAtDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonHistory">
+      <wsdl:input message="tns:InquireRegisteredPersonHistorySoapIn" />
+      <wsdl:output message="tns:InquireRegisteredPersonHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCurrentRegisteredPerson">
+      <wsdl:input message="tns:ConfirmCurrentRegisteredPersonSoapIn" />
+      <wsdl:output message="tns:ConfirmCurrentRegisteredPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestRegisteredPersonCertificateDetails">
+      <wsdl:input message="tns:RequestRegisteredPersonCertificateDetailsSoapIn" />
+      <wsdl:output message="tns:RequestRegisteredPersonCertificateDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RegistrationSoap" type="tns:RegistrationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InquireCurrentDetails">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireCurrentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireCurrentDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireCurrentDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonAsAtDate">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireRegisteredPersonAsAtDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireRegisteredPersonAsAtDateSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireRegisteredPersonAsAtDateSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonHistory">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireRegisteredPersonHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireRegisteredPersonHistorySecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InquireRegisteredPersonHistorySecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCurrentRegisteredPerson">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/ConfirmCurrentRegisteredPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmCurrentRegisteredPersonSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmCurrentRegisteredPersonSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestRegisteredPersonCertificateDetails">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/RequestRegisteredPersonCertificateDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RequestRegisteredPersonCertificateDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RequestRegisteredPersonCertificateDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RegistrationSoap12" type="tns:RegistrationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InquireCurrentDetails">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireCurrentDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireCurrentDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireCurrentDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonAsAtDate">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireRegisteredPersonAsAtDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireRegisteredPersonAsAtDateSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireRegisteredPersonAsAtDateSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquireRegisteredPersonHistory">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/InquireRegisteredPersonHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireRegisteredPersonHistorySecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InquireRegisteredPersonHistorySecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCurrentRegisteredPerson">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/ConfirmCurrentRegisteredPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmCurrentRegisteredPersonSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmCurrentRegisteredPersonSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestRegisteredPersonCertificateDetails">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/RequestRegisteredPersonCertificateDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RequestRegisteredPersonCertificateDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RequestRegisteredPersonCertificateDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/Registration/Registration/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Registration">
+    <wsdl:port name="RegistrationSoap" binding="tns:RegistrationSoap">
+      <soap:address location="https://vt.services.nzta.govt.nz/cdtpt/webservices/Registration/Registration.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RegistrationSoap12" binding="tns:RegistrationSoap12">
+      <soap12:address location="https://vt.services.nzta.govt.nz/cdtpt/webservices/Registration/Registration.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

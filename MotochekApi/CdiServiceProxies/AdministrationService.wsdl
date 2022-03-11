@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.cdi.ltsa.govt.nz/SecurityService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/" xmlns:s6="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:s4="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:s1="http://localhost/Schema/AdministrationService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://localhost/Schema/CdiServiceTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s5="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/">
+      <s:import namespace="http://localhost/Schema/AdministrationService" />
+      <s:element name="EndSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortWorkflow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AbortWorkflowRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortWorkflowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AbortWorkflowResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortFinancialSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AbortSessionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortFinancialSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:AbortFinancialSessionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionForId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionForIdRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionForIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionForIdResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimeOutInactiveSessions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:TimeOutInactiveSessionsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimeOutInactiveSessionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:TimeOutInactiveSessionsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionsForEod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionsForEodRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionsForEodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:EndSessionsForEodResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkSessionsForEod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:MarkSessionsForEodRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkSessionsForEodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:MarkSessionsForEodResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelUnlockTerminal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:CancelUnlockTerminalRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelUnlockTerminalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:CancelUnlockTerminalResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:ConnectionDetailsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:ConnectionDetailsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseConnection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:CloseConnectionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:CloseConnectionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/AdministrationService">
+      <s:import namespace="http://localhost/Schema/CdiServiceTypes" />
+      <s:element name="EndSessionRequest" type="s1:EndSessionRequest" />
+      <s:complexType name="EndSessionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndSessionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EndSessionResult" type="s1:EndSessionResponse" />
+      <s:element name="AbortWorkflowRequest" type="s1:AbortWorkflowRequest" />
+      <s:complexType name="AbortWorkflowRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AbortWorkflowResult" type="s1:AbortWorkflowResponse" />
+      <s:complexType name="AbortWorkflowResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AbortSessionRequest" type="s1:AbortSessionRequest" />
+      <s:complexType name="AbortSessionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AbortFinancialSessionResult" type="s1:AbortSessionResponse" />
+      <s:complexType name="AbortSessionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EndSessionForIdRequest" type="s1:EndSessionForIdRequest" />
+      <s:complexType name="EndSessionForIdRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:EndSessionForIdRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndSessionForIdRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClosureReason" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EndSessionForIdResult" type="s1:EndSessionForIdResponse" />
+      <s:complexType name="EndSessionForIdResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="TimeOutInactiveSessionsRequest" type="s1:TimeOutInactiveSessionsRequest" />
+      <s:complexType name="TimeOutInactiveSessionsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TimeOutInactiveSessionsResponseResponseBody" />
+      <s:element name="TimeOutInactiveSessionsResult" type="s1:TimeOutInactiveSessionsResponse" />
+      <s:complexType name="TimeOutInactiveSessionsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:TimeOutInactiveSessionsResponseResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EndSessionsForEodRequest" type="s1:EndSessionsForEodRequest" />
+      <s:complexType name="EndSessionsForEodRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:EndSessionsForEodRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndSessionsForEodRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EndSessionsForEodResult" type="s1:EndSessionsForEodResponse" />
+      <s:complexType name="EndSessionsForEodResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MarkSessionsForEodRequest" type="s1:MarkSessionsForEodRequest" />
+      <s:complexType name="MarkSessionsForEodRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:MarkSessionsForEodRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarkSessionsForEodRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:normalizedString" />
+          <s:element minOccurs="1" maxOccurs="1" name="LedgerDate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MarkSessionsForEodResult" type="s1:MarkSessionsForEodResponse" />
+      <s:complexType name="MarkSessionsForEodResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CancelUnlockTerminalRequest" type="s1:CancelUnlockTerminalRequest" />
+      <s:complexType name="CancelUnlockTerminalRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:CancelUnlockTerminalRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelUnlockTerminalRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MvrConnectionDetails" type="s1:ConnectionDetailsRequestType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrConnectionDetails" type="s1:ConnectionDetailsRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionDetailsRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalID" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConnectionType" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationID" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutletCode" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentCode" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CancelUnlockTerminalResponseResponseBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HostTerminalsUnlocked" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelUnlockTerminalResult" type="s1:CancelUnlockTerminalResponse" />
+      <s:complexType name="CancelUnlockTerminalResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:CancelUnlockTerminalResponseResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ConnectionDetailsRequest" type="s1:ConnectionDetailsRequest" />
+      <s:complexType name="ConnectionDetailsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:ConnectionDetailsRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConnectionDetailsRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MvrConnectionDetails" type="s1:ConnectionDetailsRequestType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrConnectionDetails" type="s1:ConnectionDetailsRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionDetailsResponseResponseBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MvrGsconDetails" type="s1:GsconDetailsResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrGsconDetails" type="s1:GsconDetailsResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="MvrConnectionDetails" type="s1:ArrayOfConnectionDetailsResponseResponseBodyMvrConnectionList" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrConnectionDetails" type="s1:ArrayOfConnectionDetailsResponseResponseBodyDlrConnectionList" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GsconDetailsResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EodInitiateTime" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CancelSessionAfter" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="LedgerDate" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="EODStartedFor" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="EODStartedOn" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="EODStartedAt" type="s:normalizedString" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsConnectionValid" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConnectionDetailsResponseResponseBodyMvrConnectionList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MvrConnectionList" type="s1:ConnectionDetailsResponseResponseBodyMvrConnectionList" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionDetailsResponseResponseBodyMvrConnectionList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalID" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostSession" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ispec" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConnectionDetailsResponseResponseBodyDlrConnectionList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DlrConnectionList" type="s1:ConnectionDetailsResponseResponseBodyDlrConnectionList" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionDetailsResponseResponseBodyDlrConnectionList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="LedgerDate" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="EffectiveDate" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousSynonym" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SessionDetails" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ispec" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConnectionDetailsResult" type="s1:ConnectionDetailsResponse" />
+      <s:complexType name="ConnectionDetailsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:ConnectionDetailsResponseResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CloseConnectionRequest" type="s1:CloseConnectionRequest" />
+      <s:complexType name="CloseConnectionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestBody" type="s1:CloseConnectionRequestRequestBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CloseConnectionRequestRequestBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CloseConnectionResponseResponseBody">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConnectionClosed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CloseConnectionResult" type="s1:CloseConnectionResponse" />
+      <s:complexType name="CloseConnectionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:CDIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s1:CloseConnectionResponseResponseBody" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Schema/CdiServiceTypes">
+      <s:complexType name="CDIRequest" />
+      <s:complexType name="CDIResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceHeader" type="s2:ServiceHeaderType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceHeaderType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Identification" type="s2:IdentificationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s2:StatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="NextService" type="s2:NextServiceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IdentificationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CdiReference" type="s2:CdiReferenceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CdiReferenceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Environment" type="s2:EnvironmentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialSession" type="s2:CdiReferenceTypeFinancialSession" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentType">
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Release" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="CdiReferenceTypeFinancialSession">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Id" type="s:normalizedString" />
+            <s:attribute name="Status" type="s:NMTOKEN" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="StatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Messages" type="s2:ArrayOfMessageType" />
+        </s:sequence>
+        <s:attribute name="Code" type="s:normalizedString" />
+        <s:attribute name="Text" type="s:normalizedString" />
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" type="s2:MessageType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MessageType">
+        <s:simpleContent>
+          <s:extension base="s:normalizedString">
+            <s:attribute name="Type" type="s:normalizedString" />
+            <s:attribute name="Code" type="s:normalizedString" />
+            <s:attribute name="Origin" type="s:normalizedString" />
+            <s:attribute name="Line" type="s:nonNegativeInteger" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="NextServiceType">
+        <s:attribute name="Service" type="s:normalizedString" />
+        <s:attribute name="Method" type="s:normalizedString" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService">
+      <s:complexType name="ClientIdentifiersType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:normalizedString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountId">
+            <s:complexType>
+              <s:simpleContent>
+                <s:extension base="s:normalizedString">
+                  <s:attribute name="AccountType">
+                    <s:simpleType>
+                      <s:restriction base="s:string">
+                        <s:enumeration value="MotoChek" />
+                      </s:restriction>
+                    </s:simpleType>
+                  </s:attribute>
+                </s:extension>
+              </s:simpleContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:normalizedString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CDIToken" type="s3:CDIToken" />
+      <s:complexType name="CDIToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TokenValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:element name="CDISessionToken" type="s:string" />
+      <s:element name="ClientIdentifiers" type="s3:ClientIdentifiersType" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd" />
+      <s:import namespace="http://schemas.cdi.ltsa.govt.nz/SecurityService" />
+      <s:import namespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+      <s:element name="Security" type="s4:Security" />
+      <s:complexType name="Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserNameToken" type="s4:UserNameToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:CDIToken" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:CDISessionToken" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityTokenReference" type="s4:SecurityTokenReference" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s3:ClientIdentifiers" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="UserNameToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s5:LocationID" />
+          <s:element minOccurs="0" maxOccurs="1" ref="s5:EndPointID" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecurityTokenReference">
+        <s:attribute ref="s6:Id" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cdi.ltsa.govt.nz/SecurityService.xsd">
+      <s:element name="LocationID" type="s:string" />
+      <s:element name="EndPointID" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <s:attribute name="Id" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EndSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSession" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="AbortWorkflowSoapIn">
+    <wsdl:part name="parameters" element="tns:AbortWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="AbortWorkflowSoapOut">
+    <wsdl:part name="parameters" element="tns:AbortWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="AbortWorkflowSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="AbortFinancialSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:AbortFinancialSession" />
+  </wsdl:message>
+  <wsdl:message name="AbortFinancialSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:AbortFinancialSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AbortFinancialSessionSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionForIdSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSessionForId" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionForIdSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionForIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionForIdSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="TimeOutInactiveSessionsSoapIn">
+    <wsdl:part name="parameters" element="tns:TimeOutInactiveSessions" />
+  </wsdl:message>
+  <wsdl:message name="TimeOutInactiveSessionsSoapOut">
+    <wsdl:part name="parameters" element="tns:TimeOutInactiveSessionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeOutInactiveSessionsSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionsForEodSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSessionsForEod" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionsForEodSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionsForEodResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionsForEodSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="MarkSessionsForEodSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkSessionsForEod" />
+  </wsdl:message>
+  <wsdl:message name="MarkSessionsForEodSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkSessionsForEodResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkSessionsForEodSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="CancelUnlockTerminalSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelUnlockTerminal" />
+  </wsdl:message>
+  <wsdl:message name="CancelUnlockTerminalSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelUnlockTerminalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelUnlockTerminalSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionDetails" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionDetailsSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="CloseConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseConnection" />
+  </wsdl:message>
+  <wsdl:message name="CloseConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseConnectionSecurity">
+    <wsdl:part name="Security" element="s4:Security" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdministrationServiceSoap">
+    <wsdl:operation name="EndSession">
+      <wsdl:input message="tns:EndSessionSoapIn" />
+      <wsdl:output message="tns:EndSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AbortWorkflow">
+      <wsdl:input message="tns:AbortWorkflowSoapIn" />
+      <wsdl:output message="tns:AbortWorkflowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AbortFinancialSession">
+      <wsdl:input message="tns:AbortFinancialSessionSoapIn" />
+      <wsdl:output message="tns:AbortFinancialSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionForId">
+      <wsdl:input message="tns:EndSessionForIdSoapIn" />
+      <wsdl:output message="tns:EndSessionForIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimeOutInactiveSessions">
+      <wsdl:input message="tns:TimeOutInactiveSessionsSoapIn" />
+      <wsdl:output message="tns:TimeOutInactiveSessionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionsForEod">
+      <wsdl:input message="tns:EndSessionsForEodSoapIn" />
+      <wsdl:output message="tns:EndSessionsForEodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkSessionsForEod">
+      <wsdl:input message="tns:MarkSessionsForEodSoapIn" />
+      <wsdl:output message="tns:MarkSessionsForEodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelUnlockTerminal">
+      <wsdl:input message="tns:CancelUnlockTerminalSoapIn" />
+      <wsdl:output message="tns:CancelUnlockTerminalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionDetails">
+      <wsdl:input message="tns:ConnectionDetailsSoapIn" />
+      <wsdl:output message="tns:ConnectionDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseConnection">
+      <wsdl:input message="tns:CloseConnectionSoapIn" />
+      <wsdl:output message="tns:CloseConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdministrationServiceSoap" type="tns:AdministrationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EndSession">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortWorkflow">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/AbortWorkflow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AbortWorkflowSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AbortWorkflowSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortFinancialSession">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/AbortFinancialSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AbortFinancialSessionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AbortFinancialSessionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionForId">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSessionForId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionForIdSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionForIdSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimeOutInactiveSessions">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/TimeOutInactiveSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TimeOutInactiveSessionsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:TimeOutInactiveSessionsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionsForEod">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSessionsForEod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkSessionsForEod">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/MarkSessionsForEod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:MarkSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:MarkSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelUnlockTerminal">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/CancelUnlockTerminal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CancelUnlockTerminalSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:CancelUnlockTerminalSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionDetails">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/ConnectionDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConnectionDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConnectionDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseConnection">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/CloseConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CloseConnectionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:CloseConnectionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdministrationServiceSoap12" type="tns:AdministrationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EndSession">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortWorkflow">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/AbortWorkflow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AbortWorkflowSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AbortWorkflowSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortFinancialSession">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/AbortFinancialSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AbortFinancialSessionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AbortFinancialSessionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionForId">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSessionForId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionForIdSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionForIdSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimeOutInactiveSessions">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/TimeOutInactiveSessions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TimeOutInactiveSessionsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TimeOutInactiveSessionsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionsForEod">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/EndSessionsForEod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkSessionsForEod">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/MarkSessionsForEod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:MarkSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:MarkSessionsForEodSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelUnlockTerminal">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/CancelUnlockTerminal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CancelUnlockTerminalSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CancelUnlockTerminalSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionDetails">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/ConnectionDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConnectionDetailsSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConnectionDetailsSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseConnection">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/CloseConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CloseConnectionSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CloseConnectionSecurity" part="Security" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://schemas.cdi.ltsa.govt.nz/SessionManagement/AdministrationService/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdministrationService">
+    <wsdl:port name="AdministrationServiceSoap" binding="tns:AdministrationServiceSoap">
+      <soap:address location="http://localhost/CDI_2010/WebServices/SessionManagement/AdministrationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdministrationServiceSoap12" binding="tns:AdministrationServiceSoap12">
+      <soap12:address location="http://localhost/CDI_2010/WebServices/SessionManagement/AdministrationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

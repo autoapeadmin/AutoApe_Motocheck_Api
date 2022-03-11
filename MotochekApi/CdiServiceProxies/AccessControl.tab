@@ -1,0 +1,1 @@
+wsdl.exe AccessControl.wsdl /namespace:CdiClient.CdiServices.AccessControl /out:AccessControlServiceProxy.cs /appsettingurlkey:AccessControlUrl /language:CS
